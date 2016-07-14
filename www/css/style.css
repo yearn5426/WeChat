@@ -1,0 +1,29 @@
+/* Empty. Add your own CSS if you like */
+.popup-head {
+  display:none;
+}
+.popup-buttons {
+  display: block;
+  padding:0;
+}
+.popup .popup-buttons button{
+  background-color: #444;
+  color: white;
+  display: block;
+  margin:0;
+  padding:0;
+  height: 45px;
+  border-bottom: 1px solid white;
+  border-radius: 0;
+  text-align: left;
+  padding-left:8px;
+  line-height: 40px;
+}
+.popup .popup-buttons button:last-child{
+  border-bottom: 0;
+}
+.popup .popup-buttons button:hover{
+  background-color: gainsboro;
+  color: #444;
+  animation: all 1s;
+}

@@ -1,0 +1,28 @@
+<ion-view view-title="Chats">
+  <ion-header-bar align-title="center" class="bar-dark" >
+    <h1 class="title">WeChat</h1>
+    <div class="buttons" ng-controller="NavCtrl">
+      <button class="button button-clear" ng-click="showMyPopup()">
+        <i class="icon ion-android-add"></i>
+      </button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list show-delete="data.showDelete" on-hold="onChatHold();onclick=false;">
+      <ion-item class="item-remove-animate item-avatar item-icon-right"  ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
+        <ion-delete-button class="ion-minus-circled"
+                           ng-click="onItemDelete(chat)">
+        </ion-delete-button>
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}}</h2>
+        <p>{{chat.lastText}}</p>
+        <i class="icon icon-accessory" style="margin-right:30px;">星期三</i>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
