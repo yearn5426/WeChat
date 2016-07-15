@@ -1,10 +1,17 @@
 /* Empty. Add your own CSS if you like */
+/* 弹出框样式 */
+.popup {
+  background-color: transparent !important;
+}
 .popup-head {
   display:none;
 }
 .popup-buttons {
   display: block;
   padding:0;
+  border:1px solid black;
+  box-shadow: 10px 10px 10px black;
+  background-color: #444;
 }
 .popup .popup-buttons button{
   background-color: #444;
@@ -13,8 +20,8 @@
   margin:0;
   padding:0;
   height: 45px;
+  border:0;
   border-bottom: 1px solid white;
-  border-radius: 0;
   text-align: left;
   padding-left:8px;
   line-height: 40px;
@@ -26,4 +33,159 @@
   background-color: gainsboro;
   color: #444;
   animation: all 1s;
+}
+
+/* chat-detail界面样式 */
+#chat-detail {
+  margin-bottom: 3em;
+}
+#chat-detail li{
+  display: block;
+  padding:10px 0;
+}
+#chat-detail img{
+  display: inline-block;
+  width:64px;
+  height: 64px;
+  border-radius: 32px;
+  vertical-align: top;
+}
+#chat-detail p{
+  display: inline-block;
+  margin:0 5px;
+  padding-top: 20px;
+  height: 64px;
+  vertical-align: top;
+}
+#chat-detail li.send{
+  float: right;
+  width: 100%;
+}
+#chat-detail li.send img{
+  float: right;
+}
+#chat-detail li.send p{
+  float: right;
+  max-width: 180px;
+  text-align: left;
+}
+
+/* chat-detail界面发送消息栏样式 */
+#sendMsg{
+  background-color: white;
+  position: absolute;
+  display: flex;
+  flex-flow:row;
+  width: 100%;
+  bottom:0;
+  height: 3em;
+  margin-bottom:48px;
+  padding-top:2px;
+  border-top:1px solid #cccccc;
+}
+#sendMsg button {
+  font-size:1.5em;
+  height: 2em;
+  vertical-align: bottom;
+  width: 1.5em;
+}
+#sendMsg button i{
+  display: inline-block;
+  vertical-align: bottom;
+}
+#sendMsg .msg{
+  display: inline-block;
+  position: relative;
+  flex:1;
+  width: auto;
+  border:0;
+  border-bottom:2px solid #ccc;
+  padding:1px 0;
+  vertical-align: bottom;
+}
+#sendMsg .msg:focus{
+  border-color: #387ef5;
+}
+#sendMsg button{
+  display: inline-block;
+  font-size: 1.5em;
+  height: 2em;
+  padding:0;
+  color: #444;
+  vertical-align: middle;
+  border:0;
+  background-color: white;
+}
+
+/* 个人信息弹窗*/
+.popup-body {
+  padding:0;
+  min-height:200px;
+  background-color: #444;
+  border:1px solid black;
+  box-shadow: 10px 10px 10px black;
+}
+div.info {
+  padding:0;
+  padding-top:5px;
+  padding-left: 5px;
+}
+h1.info{
+  display: block;
+  width: 100%;
+  font-size: 30px;
+  font-weight: lighter;
+  text-align: center;
+  color: white;
+}
+img.info {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  text-align: left;
+}
+h2.info {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: lighter;
+  font-style: oblique;
+  vertical-align: top;
+  color: white;
+}
+h3.info {
+  margin:0;
+  padding:0;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: lighter;
+  text-align: left;
+  color: white;
+}
+button.info {
+  position: absolute;
+  background-color: #444;
+  font-size:20px;
+  bottom:0;
+  color: white;
+  display: block;
+  margin:0;
+  padding:0;
+  height: 45px;
+  width: 99%;
+  border:0;
+  border-top: 1px solid white;
+  line-height: 40px;
+  text-align: center;
+}
+button.info:hover{
+  background-color: gainsboro;
+  color: #444;
+  animation: all 1s;
+}
+i.info {
+  font-size: 30px;
+  display: inline-block;
+  color: white;
+  margin-right: 5px;
 }

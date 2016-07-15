@@ -4,6 +4,7 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
+
 <ion-view view-title="{{chat.name}}">
   <ion-header-bar align-title="center" class="bar-dark" >
     <div class="buttons" ng-controller="NavCtrl">
@@ -13,15 +14,32 @@
     </div>
     <h1 class="title">{{chat.name}}</h1>
     <div class="buttons" ng-controller="NavCtrl">
-      <button class="button button-clear" ng-click="showMyPopup()">
+      <button class="button button-clear" ng-click="info(chat.id)">
         <i class="icon ion-ios-list-outline"></i>
       </button>
     </div>
   </ion-header-bar>
-  <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{chat.lastText}}
-    </p>
+  <ion-content class="padding" id="chat-detail">
+    <ul id="msg">
+      <li class="receive">
+        <img ng-src="{{getPeople(chat.id).face}}">
+        <p>
+          {{chat.lastText}}
+        </p>
+      </li>
+      <li class="send">
+        <img ng-src="img/mike.png">
+        <p>
+          {{chat.lastText}}
+        </p>
+      </li>
+    </ul>
   </ion-content>
+  <form id="sendMsg" >
+    <button class="speechBtn"><i class="icon ion-ios-mic"></i></button>
+    <input name="msg" type="text" class="msg" placeholder="请输入消息"/>
+    <button class="expressionBtn"><i class="icon ion-happy-outline"></i></button>
+    <button class="sendBtn" ng-click="sendMsg()"><i class="icon ion-ios-redo"></i></button>
+  </form>
 </ion-view>
+

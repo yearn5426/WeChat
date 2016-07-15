@@ -8,21 +8,22 @@
     </div>
   </ion-header-bar>
   <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
     <ion-list show-delete="data.showDelete" on-hold="onChatHold();onclick=false;">
       <ion-item class="item-remove-animate item-avatar item-icon-right"  ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" >
         <ion-delete-button class="ion-minus-circled"
-                           ng-click="onItemDelete(chat)">
+                           ng-click="mulRemove(chat)">
         </ion-delete-button>
-        <img ng-src="{{chat.face}}">
+        <img ng-src="{{getPeople(chat.id).face}}">
         <h2>{{chat.name}}</h2>
         <p>{{chat.lastText}}</p>
-        <i class="icon icon-accessory" style="margin-right:30px;">星期三</i>
+        <i class="icon icon-accessory" style="margin-right:23px;font-size: 13px;">星期三</i>
         <i class="icon ion-chevron-right icon-accessory"></i>
         <ion-option-button class="button-assertive" ng-click="remove(chat)">
           Delete
         </ion-option-button>
       </ion-item>
-    </ion-list>
+    </ion-list><ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
   </ion-content>
 </ion-view>
 
