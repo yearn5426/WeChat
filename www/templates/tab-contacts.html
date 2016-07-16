@@ -1,4 +1,4 @@
-<ion-view view-title="Contacts">
+<ion-view view-title="Contacts" class="ymContacts">
   <ion-header-bar align-title="center" class="bar-dark" >
     <h1 class="title">WeChat</h1>
     <div class="buttons" ng-controller="NavCtrl">
@@ -6,69 +6,57 @@
         <i class="icon ion-android-add"></i>
       </button>
     </div>
+    <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+    <li>E</li>
+    <li>F</li>
+    <li>G</li>
+    <li>H</li>
+    <li>I</li>
+    <li>J</li>
+    <li>K</li>
+    <li>L</li>
+    <li>M</li>
+    <li>N</li>
+    <li>O</li>
+    <li>P</li>
+    <li>Q</li>
+    <li>R</li>
+    <li>S</li>
+    <li>T</li>
+    <li>U</li>
+    <li>V</li>
+    <li>W</li>
+    <li>X</li>
+    <li>Y</li>
+    <li>Z</li>
+  </ul>
   </ion-header-bar>
-  <ion-content class="ymContacts">
+  <ion-content >
     <style>
-      .ymContacts .group{
-        width: 100%;
-        padding:0;
-        border:0;
-        margin: 0;
-      }
-      .ymContacts .group p{
-        display: block;
-        background-color: #8f8f8f;
-        color: white;
-        width: 100%;
-        margin:5px auto;
-        padding:0;
-        border:0;
-        padding-left: 5px;
-      }
-      .ymContacts .group  ion-item{
-        width: 95%;
-        margin:0 auto;
-        border-top:0;
-        border-left:0;
-        border-right:0;
-        padding-bottom: 10px;
-        min-height: 0;
-        height: 70px;
-        display: block;
-      }
-      .ymContacts .group .item-content img {
-        border-radius: 0 !important;
-        top: 10px !important;
-        left:10px !important;
-        vertical-align: middle;
-      }
-      .ymContacts .group h2{
-        margin-top:10px;
-      }
-      .ymContacts .group ion-item:last-child{
-        border-bottom: 0;
-      }
-      .ymContacts .group:last-child{
-        padding-bottom: 5px;
-        border-bottom: 1px solid #dddddd;
-      }
-      .ymContacts ul{
-        position: fixed;
-        top:1px;
-        right:0;
-        padding:2px;
-        display: block;
-        background-color: #4d4d4d;
-        z-index: 999;
-        text-align: center;
-        border-radius: 10px;
-        opacity:0.7;
-      }
-      .ymContacts ul li{
-        color: whitesmoke;
-        line-height: 18px;
-      }
+
     </style>
+    <div>
+      <ul>
+        <li>
+          <i class="icon ion-ios-personadd" style="background-color: darkorange;"></i><h2>新的朋友</h2>
+        </li>
+        <li>
+          <i class="icon ion-android-contacts" style="background-color: limegreen;"></i><h2>群聊</h2>
+        </li>
+        <li>
+          <i class="icon ion-ios-pricetag" style="background-color: deepskyblue;"></i>
+          <h2>标签</h2>
+        </li>
+        <li>
+          <i class="icon ion-ios-at" style="background-color: orangered;"></i>
+          <h2>公众号</h2>
+        </li>
+      </ul>
+    </div>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right group"
                 ng-repeat="contact in contacts" type="item-text-wrap" >
@@ -83,33 +71,5 @@
 
       </ion-item>
     </ion-list>
-    <ul>
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-      <li>D</li>
-      <li>E</li>
-      <li>F</li>
-      <li>G</li>
-      <li>H</li>
-      <li>I</li>
-      <li>J</li>
-      <li>K</li>
-      <li>L</li>
-      <li>M</li>
-      <li>N</li>
-      <li>O</li>
-      <li>P</li>
-      <li>Q</li>
-      <li>R</li>
-      <li>S</li>
-      <li>T</li>
-      <li>U</li>
-      <li>V</li>
-      <li>W</li>
-      <li>X</li>
-      <li>Y</li>
-      <li>Z</li>
-    </ul>
   </ion-content>
 </ion-view>

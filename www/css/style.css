@@ -53,11 +53,15 @@
 #chat-detail p{
   display: inline-block;
   margin:0 5px;
-  padding-top: 20px;
-  height: 64px;
+  margin-top:18px;
+  padding: 10px;
+  border-radius: 15px;
+  min-height: 44px;
   vertical-align: top;
+  max-width: 180px;
 }
 #chat-detail li.send{
+  position: relative;
   float: right;
   width: 100%;
 }
@@ -65,9 +69,11 @@
   float: right;
 }
 #chat-detail li.send p{
+  background: linear-gradient(rgb(253,253,253),rgb(230,230,230));
   float: right;
-  max-width: 180px;
-  text-align: left;
+}
+#chat-detail li.receive p{
+  background: linear-gradient(rgb(121,213,103),rgb(30,154,77));
 }
 
 /* chat-detail界面发送消息栏样式 */
@@ -188,4 +194,93 @@ i.info {
   display: inline-block;
   color: white;
   margin-right: 5px;
+}
+
+/*通讯录界面样式*/
+.ymContacts .group{
+  width: 100%;
+  padding:0;
+  border:0;
+  margin: 0;
+}
+.ymContacts .group p{
+  display: block;
+  background-color: #8f8f8f;
+  color: white;
+  width: 100%;
+  margin:auto;
+  padding:0;
+  border:0;
+  padding-left: 5px;
+}
+.ymContacts .group  ion-item{
+  width: 95%;
+  margin:0 auto;
+  border-top:0;
+  border-left:0;
+  border-right:0;
+  padding-bottom: 16px;
+  min-height: 0;
+  height: 70px;
+  display: block;
+}
+.ymContacts .group  .item-avatar img {
+  border-radius: 0 ;
+  vertical-align: middle;
+}
+.ymContacts .group h2{
+  margin-top:10px;
+}
+.ymContacts .group ion-item:last-child{
+  border-bottom: 0;
+}
+.ymContacts ion-header-bar ul{
+  position: fixed;
+  top:45px;
+  right:0;
+  padding:2px;
+  display: block;
+  background-color: #4d4d4d;
+  z-index: 99999;
+  text-align: center;
+  border-radius: 10px;
+  opacity:0.7;
+}
+.ymContacts ion-header-bar ul li{
+  color: whitesmoke;
+  line-height: 18px;
+}
+.ymContacts ion-content ul li i{
+  position: absolute;
+  top:5px;
+  left:16px;
+  display: inline-block;
+  border-radius: 0 ;
+  line-height: 40px;
+  vertical-align: middle;
+  color: white;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  text-align: center;
+}
+.ymContacts ion-content ul li h2{
+  vertical-align: middle;
+  width: 178px;
+  margin:0 auto;
+  font-size: 16px;
+    font-weight: normal;
+  font-family:"-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+}
+.ymContacts ion-content ul li{
+  position: relative;
+  border-bottom: 1px solid #ddd;
+  padding:16px 54px 16px 72px;
+  width: 95%;
+  margin:0 auto;
+  line-height: 50px;
+  height:50px;
+}
+.ymContacts ion-content ul li:last-child{
+  border-bottom: 0;
 }

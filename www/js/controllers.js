@@ -17,10 +17,14 @@ angular.module('starter.controllers', [])
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
-  };
-
-  $scope.mulRemove = function(chat) {
-    Chats.remove(chat);
+    var msgNum = document.getElementsByClassName("badge-assertive")[0];
+    if(msgNum.innerHTML != 1){
+      if(chat.read == false){
+        msgNum.innerHTML--;
+      }
+    } else {
+      msgNum.innerHTML = "";
+    }
   };
   $scope.onChatHold = function() {
     $scope.data.showDelete = !$scope.data.showDelete;
@@ -33,12 +37,26 @@ angular.module('starter.controllers', [])
       if($scope.addNum < 5){
         Chats.add($scope.addNum);
         $scope.addNum += 1;
+        var msgNum = document.getElementsByClassName("badge-assertive")[0];
+        if(!msgNum.innerHTML){
+          msgNum.innerHTML = 1;
+        }else {
+          msgNum.innerHTML++;
+        }
       }
       else $scope.addNum = 0;
-      var msg = document.getElementsByClassName("badge-assertive")[0];
-      msg.innerHTML = parseInt(msg.innerHTML) + 1;
       $scope.$broadcast('scroll.refreshComplete');
     }, 1000);
+  };
+  $scope.read = function(chatId){
+    if(Chats.get(chatId).read == false){
+      var msgNum = document.getElementsByClassName("badge-assertive")[0];
+      if(msgNum.innerHTML != 1){
+        msgNum.innerHTML--;
+      } else {
+        msgNum.innerHTML = "";
+      }
+    }
   }
 })
 
@@ -70,8 +88,8 @@ angular.module('starter.controllers', [])
     newLi.className = "send";
     var newImg = document.createElement("img");
     var newP = document.createElement("p");
-    newImg.setAttribute("src", "img/mike.png");
-    newImg.setAttribute("ng-src", "img/mike.png");
+    newImg.setAttribute("src", "img/me.jpg");
+    newImg.setAttribute("ng-src", "img/me.jpg");
     newP.innerHTML = msg.value;
     newP.className = "ng-binding";
     newLi.appendChild(newImg);
@@ -123,19 +141,25 @@ angular.module('starter.controllers', [])
               if($scope.addNum < 5){
                 Chats.add($scope.addNum);
                 $scope.addNum += 1;
+                var msgNum = document.getElementsByClassName("badge-assertive")[0];
+                if(!msgNum.innerHTML){
+                  msgNum.innerHTML = 1;
+                }else {
+                  msgNum.innerHTML++;
+                }
               }
               else $scope.addNum = 0;
               e.preventDefault();
               myPopup.close();
-              var msg = document.getElementsByClassName("badge-assertive")[0];
-              msg.innerHTML = parseInt(msg.innerHTML) + 1;
             }
           }
         ]
       });
     };
-    $scope.back = function() {
+    $scope.back = function(chatId) {
       $ionicHistory.goBack();
+      Chats.get(chatId).read = true;
+      $scope.chat = Chats.get(chatId);
     };
     $scope.info = function(chatId) {
       $scope.people = $scope.getPeople(chatId);
