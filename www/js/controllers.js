@@ -10,7 +10,9 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  $scope.addNum = 0;
+
+
+
   $scope.data = {
     showDelete: false
   };
@@ -60,15 +62,14 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('ContactsCtrl', function($scope, Contacts, $ionicPopup) {
+.controller('ContactsCtrl', function($scope, Contacts, $ionicPopup, $timeout) {
   $scope.contacts = Contacts.all();
   $scope.showInfo = function(peopleId) {
     $scope.people = Contacts.getPeople(peopleId);
     $scope.otherInfo = $ionicPopup.show({
       scope: $scope,
-      template: '<div class="info"> <h1 class="info">Infomation</h1><img class="info" ng-src="{{people.face}}"> ' +
-      '<h2 class="info">{{people.name}}</h2><br> <i class="icon ion-ios-list-outline info"></i><h3 class="info">Info：{{people.info}}</h3> ' +
-      '</div><button class="info" ng-click="closeInfo()">OK</button>'
+      template: '<div class="info" ng-click="closeInfo()"><h1 class="info">Infomation</h1><img class="info" ng-src="{{people.face}}"> ' +
+      '<h2 class="info">{{people.name}}</h2><br> <i class="icon ion-ios-list-outline info"></i><h3 class="info">Info：{{people.info}}</h3> '
     });
   };
   $scope.closeInfo = function(){
@@ -100,17 +101,30 @@ angular.module('starter.controllers', [])
 })
 
 
-  .controller('AccountCtrl', function($scope) {
+  .controller('AccountCtrl', function($scope, $ionicPopup) {
   $scope.settings = {
-    enableFriends: true
+    visibility: true
   };
+  $scope.showLarge = function(src){
+    $scope.src = src;
+    $scope.largePic = $ionicPopup.show({
+      scope: $scope,
+      template: '<img style="width: 250px;height: 250px;" ng-src="{{src}}" ng-click="closeImg()">'
+    });
+  };
+  $scope.closeImg = function() {
+    $scope.largePic.close();
+  }
 })
   .controller('FindCtrl', function($scope) {
     $scope.settings = {
       enableFriends: true
     };
   })
-  .controller('NavCtrl',  function($scope, $ionicPopup, $ionicHistory, Chats, Contacts){
+  .controller('NavCtrl',  function($scope, $ionicPopup, $ionicHistory, Chats, Contacts, $timeout, $cordovaCamera){
+    $scope.addNum = 0;
+    $scope.myPicture = "img/me.jpg";
+
     $scope.getPeople = function(chatId){
       return Contacts.getPeople(chatId);
     };
@@ -122,16 +136,31 @@ angular.module('starter.controllers', [])
             text: '<i class="icon ion-ios-camera"></i> 拍照',
             type: 'button-full',
             onTap: function(e) {
-              e.preventDefault();
-              myPopup.close();
+              var options = {
+                quality: 50,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.CAMERA,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false,
+                correctOrientation:true
+              };
+
+              $cordovaCamera.getPicture(options).then(function(imageData) {
+                $scope.myPicture = "data:image/jpeg;base64," + imageData;
+              }, function(err) {
+                // error
+              });
             }
           },
           {
             text: '<i class="icon ion-ios-personadd"></i> 添加好友',
             type: 'button-full',
             onTap: function(e) {
-              e.preventDefault();
-              myPopup.close();
+
+                e.preventDefault();
+                myPopup.close();
             }
           },
           {
@@ -165,10 +194,10 @@ angular.module('starter.controllers', [])
       $scope.people = $scope.getPeople(chatId);
       $scope.otherInfo = $ionicPopup.show({
         scope: $scope,
-        template: '<div class="info"> <h1 class="info">Infomation</h1><img class="info" ng-src="{{people.face}}"> ' +
-        '<h2 class="info">{{people.name}}</h2><br> <i class="icon ion-ios-list-outline info"></i><h3 class="info">Info：{{people.info}}</h3> ' +
-        '</div><button class="info" ng-click="closeInfo()">OK</button>'
+        template: '<div class="info" ng-click="closeInfo()"> <h1 class="info">Infomation</h1><img class="info" ng-src="{{people.face}}"> ' +
+        '<h2 class="info">{{people.name}}</h2><br> <i class="icon ion-ios-list-outline info"></i><h3 class="info">Info：{{people.info}}</h3> </div>'
       });
+
     };
     $scope.closeInfo = function(){
       $scope.otherInfo.close();
