@@ -9,34 +9,10 @@
     </div>
   </ion-header-bar>
   <ion-content class="ymChats">
-    <style>
-      .ymChats ion-item a{
-        height: 75px;
-      }
-      .ymChats .item-avatar .msgRead{
-        position: relative;
-        background-color: #ef473a;
-        left:-28px;
-        top:1px;
-        padding: 1px 6px;
-        border-radius: 10px;
-        text-align: center;
-        line-height: 16px;
-        font-size: 12px;
-        color: white;
-        font-weight: bold;
-      }
-      .ymChats .item-avatar .msgRead+h2{
-        margin-top: -18px;
-      }
-      .ymChats .item-avatar .msgRead+h2.read{
-        margin-top: 0;
-      }
-    </style>
     <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
     <ion-list show-delete="data.showDelete" on-hold="onChatHold();onclick=false;">
       <ion-item class="item-remove-animate item-avatar item-icon-right"
-                ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" ng-click="read(chat.id)" >
+                ng-repeat="chat in chats track by $index" type="item-text-wrap" href="#/tab/chats/{{chat.id}}" ng-click="read(chat.id)" >
         <ion-delete-button class="ion-minus-circled"
                            ng-click="remove(chat)">
         </ion-delete-button>

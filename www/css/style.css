@@ -1,17 +1,45 @@
 /* Empty. Add your own CSS if you like */
+/*tab-chats界面样式*/
+.ymChats ion-item a{
+  height: 75px;
+}
+.ymChats .item-avatar .msgRead{
+  position: relative;
+  background-color: #ef473a;
+  left:-28px;
+  top:1px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+.ymChats .item-avatar .msgRead+h2{
+  margin-top: -18px;
+}
+.ymChats .item-avatar .msgRead+h2.read{
+  margin-top: 0;
+}
+
 /* 弹出框样式 */
-.popup {
+.popup-container .popup {
   background-color: transparent !important;
+  box-shadow: 10px 10px 10px black;
+  width:auto;
 }
 .popup-head {
   display:none;
+  border:0;
+  padding:0;
 }
 .popup-buttons {
   display: block;
   padding:0;
   border:1px solid black;
-  box-shadow: 10px 10px 10px black;
   background-color: #444;
+  min-height: 45px;
 }
 .popup .popup-buttons button{
   background-color: #444;
@@ -19,9 +47,10 @@
   display: block;
   margin:0;
   padding:0;
+  width: 250px;
   height: 45px;
   border:0;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid black;
   text-align: left;
   padding-left:8px;
   line-height: 40px;
@@ -33,6 +62,10 @@
   background-color: gainsboro;
   color: #444;
   animation: all 1s;
+}
+.popup img{
+  width: 180px;
+  height: 180px;
 }
 
 /* chat-detail界面样式 */
@@ -70,51 +103,34 @@
 }
 #chat-detail li.send p{
   background: linear-gradient(rgb(253,253,253),rgb(230,230,230));
+  background-color: #ebebeb;
   float: right;
 }
 #chat-detail li.receive p{
   background: linear-gradient(rgb(121,213,103),rgb(30,154,77));
+  background-color: #4bb75a;
 }
 
 /* chat-detail界面发送消息栏样式 */
+#sendMsg *{
+  padding:0;
+  margin:0;
+}
 #sendMsg{
   background-color: white;
   position: absolute;
-  display: flex;
   flex-flow:row;
   width: 100%;
   bottom:0;
   height: 3em;
-  margin-bottom:48px;
+  margin-bottom:50px;
   padding-top:2px;
   border-top:1px solid #cccccc;
 }
 #sendMsg button {
+  display: inline-block;
+  width: 10%;
   font-size:1.5em;
-  height: 2em;
-  vertical-align: bottom;
-  width: 1.5em;
-}
-#sendMsg button i{
-  display: inline-block;
-  vertical-align: bottom;
-}
-#sendMsg .msg{
-  display: inline-block;
-  position: relative;
-  flex:1;
-  width: auto;
-  border:0;
-  border-bottom:2px solid #ccc;
-  padding:1px 0;
-  vertical-align: bottom;
-}
-#sendMsg .msg:focus{
-  border-color: #387ef5;
-}
-#sendMsg button{
-  display: inline-block;
-  font-size: 1.5em;
   height: 2em;
   padding:0;
   color: #444;
@@ -122,16 +138,33 @@
   border:0;
   background-color: white;
 }
+#sendMsg button i{
+  display: inline-block;
+  vertical-align: bottom;
+}
+#sendMsg .msg{
+  display: inline-block;
+  width: 66%;
+  border:0;
+  border-bottom:2px solid #ccc;
+  padding:1px 0;
+  vertical-align: middle;
+}
+#sendMsg .msg:focus{
+  border-color: #387ef5;
+}
 
 /* 个人信息弹窗*/
 .popup-body {
   padding:0;
-  min-height:200px;
   background-color: #444;
   border:1px solid black;
-  box-shadow: 10px 10px 10px black;
+  height:auto;
+  line-height: 0px;
+  font-size:0;
 }
 div.info {
+  width:250px;
   padding:0;
   padding-top:5px;
   padding-left: 5px;
@@ -168,27 +201,6 @@ h3.info {
   text-align: left;
   color: white;
 }
-button.info {
-  position: absolute;
-  background-color: #444;
-  font-size:20px;
-  bottom:0;
-  color: white;
-  display: block;
-  margin:0;
-  padding:0;
-  height: 45px;
-  width: 99%;
-  border:0;
-  border-top: 1px solid white;
-  line-height: 40px;
-  text-align: center;
-}
-button.info:hover{
-  background-color: gainsboro;
-  color: #444;
-  animation: all 1s;
-}
 i.info {
   font-size: 30px;
   display: inline-block;
@@ -205,7 +217,7 @@ i.info {
 }
 .ymContacts .group p{
   display: block;
-  background-color: #8f8f8f;
+  background-color: #bbb;
   color: white;
   width: 100%;
   margin:auto;
@@ -234,21 +246,24 @@ i.info {
 .ymContacts .group ion-item:last-child{
   border-bottom: 0;
 }
-.ymContacts ion-header-bar ul{
+.ymContacts ul.nav{
   position: fixed;
-  top:45px;
+  top: 45px;
+  bottom:50px;
+  height: auto;
   right:0;
-  padding:2px;
+  padding:0 2px;
   display: block;
   background-color: #4d4d4d;
-  z-index: 99999;
+  z-index: 9;
   text-align: center;
   border-radius: 10px;
   opacity:0.7;
 }
-.ymContacts ion-header-bar ul li{
+.ymContacts ul.nav li{
+  display: block;
   color: whitesmoke;
-  line-height: 18px;
+  height: 3.85%;
 }
 .ymContacts ion-content ul li i{
   position: absolute;
@@ -267,9 +282,9 @@ i.info {
 .ymContacts ion-content ul li h2{
   vertical-align: middle;
   width: 178px;
-  margin:0 auto;
+  margin:0 0;
   font-size: 16px;
-    font-weight: normal;
+  font-weight: normal;
   font-family:"-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
 }
 .ymContacts ion-content ul li{
@@ -283,4 +298,82 @@ i.info {
 }
 .ymContacts ion-content ul li:last-child{
   border-bottom: 0;
+}
+
+/*账户界面样式*/
+.ymAccount .background {
+  width: 100%;
+  height:783px;
+  overflow: visible;
+  margin-top:-583px;
+}
+.ymAccount .split{
+  display: block;
+  background-color: #ddd;
+  color: white;
+  width: 100%;
+  height:20px;
+  padding:0;
+  border:0;
+}
+.ymAccount ion-content .info1{
+  width: auto;
+  padding:15px 20px;
+}
+.ymAccount .info1 img{
+  display: inline-block;
+  margin-top: -92px;
+  width: 5em;
+  height: 5em;
+  border-radius: 35px;
+  vertical-align: middle;
+}
+.ymAccount .info1 div{
+  display: inline-block;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+.ymAccount .info1 div p{
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+.ymAccount .info1 div p i{
+  margin-left: 10px;
+  color: #387ef5;
+  font-size: 1.1em;
+}
+.ymAccount .info1 div label,.ymAccount .info1 div span{
+  font-size: 0.8em;
+  color: #8f8f8f;
+}
+.ymAccount .info2 div {
+  width: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding:10px 5px;
+  border-bottom: 1px solid #ddd;
+}
+.ymAccount .info2 div label{
+  display: inline-block;
+  width: 65px;
+  margin-right:20px;
+}
+.ymAccount .info2 span {
+  color: #8f8f8f;
+}
+.ymAccount .info2 img{
+  display: inline-block;
+  width: 20%;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.ymAccount .info2 div:last-child{
+  border-bottom:0;
+}
+.ymAccount .item-toggle{
+  margin-left:10px;
+  margin-right:10px;
+  width:auto;
+  border:0 !important;
+  border-bottom:1px solid #ddd !important;
 }

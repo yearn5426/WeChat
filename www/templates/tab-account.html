@@ -1,17 +1,39 @@
-<ion-view view-title="Account">
+<ion-view view-title="Account" class="ymAccount">
   <ion-header-bar align-title="center" class="bar-dark" >
-    <h1 class="title">WeChat</h1>
+    <h1 class="title">Account</h1>
     <div class="buttons" ng-controller="NavCtrl">
-      <button class="button button-clear" ng-click="showMyPopup()">
-        <i class="icon ion-android-add"></i>
+      <button class="button button-clear" ng-click="">
+        <i class="icon ion-ios-gear-outline"></i>
       </button>
     </div>
   </ion-header-bar>
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
+    <img src="img/background.jpg" class="background">
+    <div class="info1">
+      <img src="img/me.jpg" ng-click="showLarge('img/me.jpg')">
+      <div>
+        <p>Ym<i class="icon ion-ios-person"></i></p>
+        <label for="account">微信号:</label><span id="account">Yearn</span>
+      </div>
+    </div>
+    <p class="split"></p>
+    <div class="info2">
+      <div class="sign">
+        <label>个性签名</label><span>Do myself~</span>
+      </div>
+      <div class="area">
+        <label>地区</label><span>上海  青浦区</span>
+      </div>
+      <div class="album">
+        <label>个人相册</label><img src="img/me.jpg" ng-click="showLarge('img/me.jpg')"><img src="img/photo1.jpg" ng-click="showLarge('img/photo1.jpg')"><img src="img/photo2.jpg" ng-click="showLarge('img/photo2.jpg')">
+      </div>
+      <div class="more">
+        <label>更多</label>
+      </div>
+    </div>
+    <p class="split"></p>
+    <ion-toggle ng-model="settings.visibility">
+      Visibility
     </ion-toggle>
-    </ion-list>
   </ion-content>
 </ion-view>
